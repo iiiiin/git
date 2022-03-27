@@ -3,7 +3,7 @@
 
 # include <SoftwareSerial.h>
 
-SoftwareSerial BTSerial(#,#)            //(RX, TX)
+SoftwareSerial BTSerial(#,#)            //(RX, TX) 순서주의
 int DIR = #                             // DIGITAL OUT 에서 번호 설정
 int PWM = #                             // DIGITAL OUT 에서 번호 설정
 
