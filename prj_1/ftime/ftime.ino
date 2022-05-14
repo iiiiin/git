@@ -1,30 +1,17 @@
-#include <SoftwareSerial.h>
-#include <Arduino.h>
-#include <Servo.h>
-
-int pos = 90;
-
-//1번이 600, 2번이 450, 3번이 174.(각각44.8,33.05,8.68)
 int DIR = 4;
-int PWM = 5;
-int blueTx = 6;
-int blueRx = 7;
-SoftwareSerial BTSerial(blueTx,blueRx);
-
-void setup() {
-  // put your setup code here, to run once:
-  Serial.begin(9600);
-  BTSerial.begin(9600);
+int PWM = 3;
+void setup()
+{
   pinMode(DIR, OUTPUT);
   pinMode(PWM, OUTPUT);
+  Serial.begin(9600);
 }
-
-void loop() {
-  // put your main code here, to run repeatedly:
+void loop()
+{
   String strCmd;
-  if(BTSerial.available())
+  if(Serial.available())
   {
-    strCmd = BTSerial.readString();
+    strCmd = Serial.readString();
     Serial.println(strCmd);
     if(strCmd == "l")
     {

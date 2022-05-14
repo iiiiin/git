@@ -3,6 +3,7 @@
 #include <Servo.h>
 
 int pos = 90;
+Servo myservo;
 
 //1번이 600, 2번이 450, 3번이 174.(각각44.8,33.05,8.68)
 int DIR = 4;
@@ -17,6 +18,11 @@ void setup() {
   BTSerial.begin(9600);
   pinMode(DIR, OUTPUT);
   pinMode(PWM, OUTPUT);
+  myservo.attach(9);
+  myservo.write(8.68);
+  Serial.println("Comand input online, write command to perform action");
+  Serial.println("-------------------------");
+
 }
 
 void loop() {
@@ -43,7 +49,16 @@ void loop() {
       analogWrite(PWM, 200);
       digitalWrite(DIR, HIGH);
       delay(50);
-    }
+      Serial.print(">");
+      int state=44.81;
+      Serial.println(state);
+      Serial.print("turning servo to ");
+      Serial.print(state);
+      Serial.println(" degrees");
+      myservo.write(80);
+      delay(1000);
+      myservo.write(state);
+      }
     else if(strCmd == "s")
     {
       analogWrite(PWM, 0);     
@@ -68,3 +83,8 @@ void loop() {
     }
   }
 }
+
+
+
+
+  
